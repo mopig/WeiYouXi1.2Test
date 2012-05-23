@@ -30,7 +30,7 @@ public class Wyx00LoginTest extends ActivityInstrumentationTestCase2{
 		try {
 			solo.clickOnButton(1);
 			solo.clickOnEditText(0);
-			solo.enterText(0, "weiyouxi_03@sina.com");
+			solo.enterText(0, "weiyouxi_30@sina.com");
 			solo.clickOnEditText(1);
 			solo.enterText(1, "weiyouxi");
 			solo.clickOnButton("µÇÂ¼");
