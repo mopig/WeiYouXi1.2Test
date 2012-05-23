@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.weiyouxi.entity.WyxMyGameGame;
 
 import com.jayway.android.robotium.solo.Solo;
+import com.weiyouxi.entity.WyxGameCenter;
 import com.weiyouxi.logic.R;
 import com.weiyouxi.logic.WyxLoginAct;
 import com.weiyouxi.logic.WyxLoginPreAct;
@@ -18,7 +20,7 @@ import com.weiyouxi.logic.WyxMainAct;
 @SuppressWarnings("rawtypes")
 public class Wyx02FirMyGameActTest extends ActivityInstrumentationTestCase2{
 	private final String TAG = "WyxLoginTest";
-	private static int mygamecount = 14;
+	private static int mygamecount = 8;
 	@SuppressWarnings("unchecked")
 	public Wyx02FirMyGameActTest() throws ClassNotFoundException{
 		super("com.weiyouxi.logic",WyxLoginPreAct.class);
@@ -49,36 +51,38 @@ public class Wyx02FirMyGameActTest extends ActivityInstrumentationTestCase2{
 		View[] MyGameAdapter = null;
 		
 		MyGameAdapter = new View[mygamecount];
-		TextView[] MyGameName = new TextView[mygamecount];
+		String[] MyGameName = new String[mygamecount];
 //		if(mygamecount==1){
 //			
 //		}else{
 //			assertEquals("我的游戏没有取到数据", true, false);
 //		}
-		Object item1 = MyGameListView.findViewById(R.id.fir_mygame_textview_gamename);
+//		Object item1 = MyGameListView.findViewById(R.id.fir_mygame_textview_gamename);
 //		MyGameListView.get
-		Log.e("我的游戏列表", "游戏个数"+MyGameListView.getChildCount());
-		try {
-			for(int i = 1;i < mygamecount;i++){
-				MyGameAdapter[i] = MyGameListView.getChildAt(i);
-				MyGameName[i]  = (TextView) MyGameAdapter[i].findViewById(R.id.fir_mygame_textview_gamename);
+		int gameCount = MyGameListView.getCount()-1;
+		Log.e("我的游戏列表", "游戏个数"+MyGameListView.getCount());
+//		try {
+			for(int i = 1;i < 9;i++){
+				MyGameName[i-1] = ((WyxMyGameGame) MyGameListView.getItemAtPosition(i)).getAppname();
+//				MyGameAdapter[i] = MyGameListView.getChildAt(i);
+//				MyGameName[i-1]  = (String) ((TextView) MyGameAdapter[i].findViewById(R.id.fir_mygame_textview_gamename)).getText();
+			Log.e("我的游戏列表", ":"+i+MyGameName[i-1]);
 			}
 			//验证“我的游戏”页面，游戏列表排序是否正确（按玩游戏的时间先后）
-			assertEquals("第一个游戏不是", "", MyGameName[1]);
-			assertEquals("第一个游戏不是", "", MyGameName[2]);
-			assertEquals("第一个游戏不是", "", MyGameName[3]);
-			assertEquals("第一个游戏不是", "", MyGameName[4]);
-			assertEquals("第一个游戏不是", "", MyGameName[5]);
-			assertEquals("第一个游戏不是", "", MyGameName[6]);
-			assertEquals("第一个游戏不是", "", MyGameName[7]);
-			assertEquals("第一个游戏不是", "", MyGameName[8]);
-			assertEquals("第一个游戏不是", "", MyGameName[9]);
-		} catch (Exception e) {
-			assertEquals("我的游戏没有取到数据", true, false);
+			assertEquals("第一个游戏不是", "十字消除", MyGameName[0]);
+			assertEquals("第二个游戏不是", "随身宠", MyGameName[1]);
+			assertEquals("第三个游戏不是", "你画我猜移动版", MyGameName[2]);
+			assertEquals("第四个游戏不是", "微城市", MyGameName[3]);
+			assertEquals("第五个游戏不是", "动物保护色", MyGameName[4]);
+			assertEquals("第六个游戏不是", "超三国", MyGameName[5]);
+			assertEquals("第七个游戏不是", "德克萨斯扑克", MyGameName[6]);
+			assertEquals("第八个游戏不是", "古墓猎人", MyGameName[7]);
+//		} catch (Exception e) {
+//			assertEquals("我的游戏没有取到数据", true, false);
 			// TODO: handle exception
-		}finally{
+//		}finally{
 			Log.e("继续执行", "go on");
-		}
+//		}
 		
 		Log.e("适配器个数", ":"+MyGameListView.getAdapter().getCount());
 		Log.e("第一个游戏名字", ":"+MyGameName[0]);
