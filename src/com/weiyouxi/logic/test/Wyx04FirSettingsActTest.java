@@ -48,11 +48,29 @@ public class Wyx04FirSettingsActTest extends ActivityInstrumentationTestCase2 {
 //			solo.clickOnText("打开", 2);
 //			solo.clickOnText("关闭");	
 //		}
-		solo.clickOnText("打开", 2);
-		solo.clickOnButton(0);
+		solo.clickOnCheckBox(0);
+		solo.clickOnCheckBox(2);
+		solo.clickOnCheckBox(4);
+		solo.clickOnCheckBox(6);
+		solo.clickOnButton("返回");
 		solo.clickOnText("通知设置");
-		assertEquals("通知设置不正确", true, solo.searchText("打开", 15)&&solo.searchText("关闭", 1));
-		
+		//验证未选中
+		assertEquals("通知设置不正确", true, !solo.isCheckBoxChecked(0));
+		assertEquals("通知设置不正确", true, !solo.isCheckBoxChecked(2));
+		assertEquals("通知设置不正确", true, !solo.isCheckBoxChecked(4));
+		assertEquals("通知设置不正确", true, !solo.isCheckBoxChecked(6));
+		//恢复默认
+		solo.clickOnCheckBox(0);
+		solo.clickOnCheckBox(2);
+		solo.clickOnCheckBox(4);
+		solo.clickOnCheckBox(6);
+		solo.clickOnButton("返回");
+		solo.clickOnText("通知设置");
+		// 验证已选中
+		assertEquals("通知设置不正确", true, solo.isCheckBoxChecked(0));
+		assertEquals("通知设置不正确", true, solo.isCheckBoxChecked(2));
+		assertEquals("通知设置不正确", true, solo.isCheckBoxChecked(4));
+		assertEquals("通知设置不正确", true, solo.isCheckBoxChecked(6));
 		solo.sleep(5000);
 	}
 //	public void test03ThemeChoice() throws Exception{
@@ -60,27 +78,32 @@ public class Wyx04FirSettingsActTest extends ActivityInstrumentationTestCase2 {
 //		solo.clickOnText("主题选择");
 //	}
    
-	public void test04Suggestion() throws Exception{
+	public void test03Suggestion() throws Exception{
 		solo.clickOnButton("设置");
 		solo.clickOnText("反馈建议");
 		//默认页面显示是否正确
 		boolean actual = solo.searchText("反馈建议")
-				&& solo.searchText("我们会在第一时间处理您的问题") && solo.searchText("80字")
+				&& solo.searchText("我们会在第一时间处理您的问题") && solo.searchText("80")
 				&& solo.searchButton("发送");
 		assertEquals("'反馈建议'初始页面显示不正确", true, actual);
-		
-//		solo.clickOnEditText(0);
-		for(int i=0;i<20;i++){
-			solo.enterText(0, "艸艸艸艸");
+		try {
+			solo.clickOnEditText(0);
+			for (int i = 0; i < 2; i++) {
+				solo.enterText(0, "艸艸艸艸");
+			}
+			// solo.goBack();
+			solo.clickOnText("发送");
+			boolean actual0 = solo.searchText("已收录，谢谢您的宝贵建议");
+			assertEquals("无发送成功提示", true, actual0);
+			solo.sleep(5000);
+		} catch (Exception e) {
+			// TODO: handle exception
+			assertTrue("不能正确发送'反馈建议'", false);
 		}
-//		solo.goBack();
-		solo.clickOnButton("发送");
-		boolean actual0 = solo.searchText("发送成功");
-		assertEquals("反馈成功，感谢您对微游戏的支持", true, actual0);
-		solo.sleep(5000);
+		
 	}
 	
-	public void test05CustomService() throws Exception{
+	public void test04CustomService() throws Exception{
 		solo.clickOnButton("设置");
 		solo.clickOnText("微游戏客服");
 		//默认页面显示是否正确
@@ -90,32 +113,33 @@ public class Wyx04FirSettingsActTest extends ActivityInstrumentationTestCase2 {
 				assertEquals("'微游戏客服'初始页面显示不正确", true, actual);
 				
 //				solo.clickOnEditText(0);
-				for(int i=0;i<20;i++){
-					solo.enterText(0, "艸艸艸艸");
-				}
+//				for(int i=0;i<20;i++){
+//					solo.enterText(0, "艸艸艸艸");
+//				}
 //				solo.goBack();
-				solo.clickOnButton("发送");
-				boolean actual0 = solo.searchText("发送成功");
-				assertEquals("发送成功，微游戏客服会尽快给予回复", true, actual0);
+//				solo.clickOnButton("发送");
+//				boolean actual0 = solo.searchText("发送成功");
+//				assertEquals("发送成功，微游戏客服会尽快给予回复", true, actual0);
 				solo.sleep(5000);
 	}
 	
-	public void test06Share() throws Exception{
+	public void test05Share() throws Exception{
 		solo.clickOnButton("设置");
 		solo.clickOnText("分享");
 		//默认页面显示是否正确
 		boolean actual = solo.searchText("分享")
-				&& solo.searchText("我正在使用微游戏客户端，它可是微博的官方游戏平台哦，里面有各种新奇好玩的游戏，亲，快来下载哟～～～") && solo.searchText("80字")
+				&& solo.searchText("我正在使用微游戏客户端，它可是微博的官方游戏平台哦，里面有各种新奇好玩的游戏，亲，快来下载哟～～～") 
+				&& solo.searchText("21")
 				&& solo.searchButton("发送");
 		assertEquals("'分享'初始页面显示不正确", true, actual);
 		
-		solo.clickOnButton("发送");
-		boolean isSend = solo.searchText("正在发送")&&solo.searchText("微博发送成功");
-		
-		assertEquals("没有发送成功提示", true, isSend);
+//		solo.clickOnButton("发送");
+//		boolean isSend = solo.searchText("正在发送")&&solo.searchText("微博发送成功");
+//		
+//		assertEquals("没有发送成功提示", true, isSend);
 	}
 	
-	public void test07About() throws Exception{
+	public void test05About() throws Exception{
 		solo.clickOnButton("设置");
 		solo.clickOnText("关于");
 		boolean actual = solo.searchText("版本:") && solo.searchText("关于")
@@ -125,16 +149,17 @@ public class Wyx04FirSettingsActTest extends ActivityInstrumentationTestCase2 {
 		assertEquals("关于页面内容不正确",true, actual);
 	}
 	
-	public void test08CheckUpdate() throws Exception{
+	public void test06CheckUpdate() throws Exception{
 		solo.clickOnButton("设置");
 		solo.clickOnText("检查更新");
 		boolean isTip = solo.searchText("您安装的已经是最新版本");
 		assertEquals("更新提示信息", true, isTip);
 	}
 	
-	public void test09Logout() throws Exception{
+	public void test07Logout() throws Exception{
 		solo.clickOnButton("设置");
 		solo.clickOnText("注销");
+		
 	}
 	protected void tearDown() throws Exception {
 		solo.finishOpenedActivities();
