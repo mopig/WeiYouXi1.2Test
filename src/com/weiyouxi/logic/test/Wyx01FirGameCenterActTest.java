@@ -17,7 +17,7 @@ import com.weiyouxi.logic.WyxLoginPreAct;
 @SuppressWarnings("rawtypes")
 public class Wyx01FirGameCenterActTest extends ActivityInstrumentationTestCase2{
 	private final String TAG = "Wyx02FirGameCenterActTest";
-	private static int gamecount = 22;
+	private static int gamecount = 24;
 	@SuppressWarnings("unchecked")
 	public Wyx01FirGameCenterActTest() throws ClassNotFoundException{
 		super("com.weiyouxi.logic", WyxLoginPreAct.class);
@@ -211,21 +211,24 @@ public class Wyx01FirGameCenterActTest extends ActivityInstrumentationTestCase2{
 			assertEquals("第5个游戏不是‘梦幻方块’？", "梦幻方块", GameName[4]);
 			assertEquals("第6个游戏不是‘宝石连环战’？", "宝石连环战", GameName[5]);
 			assertEquals("第7个游戏不是‘邻邦战争’？", "邻邦战争", GameName[6]);
-			assertEquals("第8个游戏不是‘闹闹马戏团’？", "闹闹马戏团", GameName[7]);
-			assertEquals("第9个游戏不是‘微三国’？", "微三国", GameName[8]);
-			assertEquals("第10个游戏不是‘德州扑克’？", "德州扑克", GameName[9]);
-			assertEquals("第11个游戏不是‘动物保护色’？", "动物保护色", GameName[10]);
-			assertEquals("第12个游戏不是‘三国时代OL’？", "三国时代OL", GameName[11]);
+			assertEquals("第7个游戏不是‘邻邦战争’？", "热血足球经理", GameName[7]);
+			assertEquals("第8个游戏不是‘闹闹马戏团’？", "闹闹马戏团", GameName[8]);
+			assertEquals("第8个游戏不是‘闹闹马戏团’？", "征战三国", GameName[9]);
+			assertEquals("第9个游戏不是‘微三国’？", "微三国", GameName[10]);
+			assertEquals("第10个游戏不是‘德州扑克’？", "德克萨斯扑克", GameName[11]);
 			assertEquals("第13个游戏不是‘趣味沙箱’？", "趣味沙箱", GameName[12]);
-			assertEquals("第14个游戏不是‘新宝石消消看’？", "新宝石消消看", GameName[13]);
-			assertEquals("第15个游戏不是‘单机斗地主’？", "单机斗地主", GameName[14]);
-			assertEquals("第16个游戏不是‘末日大冒险’？", "末日大冒险", GameName[15]);
-			assertEquals("第17个游戏不是‘随身宠’？", "随身宠", GameName[16]);
-			assertEquals("第18个游戏不是‘深海连连看’？", "深海连连看", GameName[17]);
-			assertEquals("第19个游戏不是‘十字消除’？", "十字消除", GameName[18]);
-			assertEquals("第20个游戏不是‘怪弹万圣节’？", "怪弹万圣节", GameName[19]);
-			assertEquals("第21个游戏不是‘古墓猎人’？", "古墓猎人", GameName[20]);
-			assertEquals("第22个游戏不是‘羊驼侠盗’？", "羊驼侠盗", GameName[21]);
+			assertEquals("第11个游戏不是‘动物保护色’？", "动物保护色", GameName[13]);
+			assertEquals("第12个游戏不是‘三国时代OL’？", "三国时代OL", GameName[14]);
+			
+			assertEquals("第14个游戏不是‘新宝石消消看’？", "新宝石消消看", GameName[15]);
+			assertEquals("第15个游戏不是‘单机斗地主’？", "单机斗地主", GameName[16]);
+			assertEquals("第16个游戏不是‘末日大冒险’？", "末日大冒险", GameName[17]);
+			assertEquals("第17个游戏不是‘随身宠’？", "随身宠", GameName[18]);
+			assertEquals("第18个游戏不是‘深海连连看’？", "深海连连看", GameName[19]);
+			assertEquals("第19个游戏不是‘十字消除’？", "十字消除", GameName[20]);
+			assertEquals("第20个游戏不是‘怪弹万圣节’？", "怪弹万圣节", GameName[21]);
+			assertEquals("第21个游戏不是‘古墓猎人’？", "古墓猎人", GameName[22]);
+			assertEquals("第22个游戏不是‘羊驼侠盗’？", "羊驼侠盗", GameName[23]);
 			
 //		} catch (Exception e) {
 			// TODO: handle exception

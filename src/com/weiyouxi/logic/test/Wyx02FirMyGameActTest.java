@@ -20,7 +20,7 @@ import com.weiyouxi.logic.WyxMainAct;
 @SuppressWarnings("rawtypes")
 public class Wyx02FirMyGameActTest extends ActivityInstrumentationTestCase2{
 	private final String TAG = "WyxLoginTest";
-	private static int mygamecount = 8;
+	private static int mygamecount = 10;
 	@SuppressWarnings("unchecked")
 	public Wyx02FirMyGameActTest() throws ClassNotFoundException{
 		super("com.weiyouxi.logic",WyxLoginPreAct.class);
@@ -62,21 +62,23 @@ public class Wyx02FirMyGameActTest extends ActivityInstrumentationTestCase2{
 		int gameCount = MyGameListView.getCount()-1;
 		Log.e("我的游戏列表", "游戏个数"+MyGameListView.getCount());
 //		try {
-			for(int i = 1;i < 9;i++){
+			for(int i = 1;i < 11;i++){
 				MyGameName[i-1] = ((WyxMyGameGame) MyGameListView.getItemAtPosition(i)).getAppname();
 //				MyGameAdapter[i] = MyGameListView.getChildAt(i);
 //				MyGameName[i-1]  = (String) ((TextView) MyGameAdapter[i].findViewById(R.id.fir_mygame_textview_gamename)).getText();
 			Log.e("我的游戏列表", ":"+i+MyGameName[i-1]);
 			}
 			//验证“我的游戏”页面，游戏列表排序是否正确（按玩游戏的时间先后）
-			assertEquals("第一个游戏不是", "十字消除", MyGameName[0]);
-			assertEquals("第二个游戏不是", "随身宠", MyGameName[1]);
-			assertEquals("第三个游戏不是", "你画我猜移动版", MyGameName[2]);
-			assertEquals("第四个游戏不是", "微城市", MyGameName[3]);
-			assertEquals("第五个游戏不是", "动物保护色", MyGameName[4]);
-			assertEquals("第六个游戏不是", "超三国", MyGameName[5]);
-			assertEquals("第七个游戏不是", "德克萨斯扑克", MyGameName[6]);
-			assertEquals("第八个游戏不是", "古墓猎人", MyGameName[7]);
+			assertEquals("第一个游戏不是", "你画我猜移动版", MyGameName[0]);
+			assertEquals("第二个游戏不是", "微城市", MyGameName[1]);
+			assertEquals("第三个游戏不是", "末日大冒险", MyGameName[2]);
+			assertEquals("第四个游戏不是", "德克萨斯扑克", MyGameName[3]);
+			assertEquals("第五个游戏不是", "超三国", MyGameName[4]);
+			assertEquals("第六个游戏不是", "微三国", MyGameName[5]);
+			assertEquals("第七个游戏不是", "随身宠", MyGameName[6]);
+			assertEquals("第八个游戏不是", "动物保护色", MyGameName[7]);
+			assertEquals("第九个游戏不是", "十字消除", MyGameName[8]);
+			assertEquals("第十个游戏不是", "古墓猎人", MyGameName[9]);
 //		} catch (Exception e) {
 //			assertEquals("我的游戏没有取到数据", true, false);
 			// TODO: handle exception
