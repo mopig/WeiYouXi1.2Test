@@ -86,20 +86,20 @@ public class Wyx04FirSettingsActTest extends ActivityInstrumentationTestCase2 {
 				&& solo.searchText("我们会在第一时间处理您的问题") && solo.searchText("80")
 				&& solo.searchButton("发送");
 		assertEquals("'反馈建议'初始页面显示不正确", true, actual);
-		try {
-			solo.clickOnEditText(0);
-			for (int i = 0; i < 2; i++) {
-				solo.enterText(0, "艸艸艸艸");
-			}
-			// solo.goBack();
-			solo.clickOnText("发送");
-			boolean actual0 = solo.searchText("已收录，谢谢您的宝贵建议");
-			assertEquals("无发送成功提示", true, actual0);
-			solo.sleep(5000);
-		} catch (Exception e) {
-			// TODO: handle exception
-			assertTrue("不能正确发送'反馈建议'", false);
-		}
+//		try {
+//			solo.clickOnEditText(0);
+//			for (int i = 0; i < 2; i++) {
+//				solo.enterText(0, "艸艸艸艸");
+//			}
+//			// solo.goBack();
+//			solo.clickOnText("发送");
+//			boolean actual0 = solo.searchText("已收录，谢谢您的宝贵建议");
+//			assertEquals("无发送成功提示", true, actual0);
+//			solo.sleep(5000);
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			assertTrue("不能正确发送'反馈建议'", false);
+//		}
 		
 	}
 	
@@ -108,7 +108,7 @@ public class Wyx04FirSettingsActTest extends ActivityInstrumentationTestCase2 {
 		solo.clickOnText("微游戏客服");
 		//默认页面显示是否正确
 				boolean actual = solo.searchText("微游戏客服")
-						&& solo.searchText("#请输入游戏名称#请将您的问题反馈给微游戏客服，我们会尽快给您回复。") && solo.searchText("80字")
+						&& solo.searchText("#请输入游戏名称#请将您的问题反馈给微游戏客服，我们会尽快给您回复。") && solo.searchText("80")
 						&& solo.searchButton("发送");
 				assertEquals("'微游戏客服'初始页面显示不正确", true, actual);
 				
